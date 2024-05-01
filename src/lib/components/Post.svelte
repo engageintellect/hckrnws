@@ -8,7 +8,7 @@
 	import Icon from '@iconify/svelte';
 </script>
 
-<a href={`/item/${id}`} target="">
+<a href={title && kids ? `/item/${id}` : `${url}`} target="">
 	<div class="card bg-base-300">
 		<div class="card-body relative p-5">
 			<div class="">

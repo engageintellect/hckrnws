@@ -9,10 +9,6 @@
 	<Nav />
 
 	<div class="mx-auto w-full max-w-2xl p-2">
-		<div class="sticky top-[68px] z-10 my-2">
-			<FeedMenu />
-		</div>
-
 		<div class="">
 			<slot />
 		</div>

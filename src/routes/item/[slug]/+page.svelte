@@ -48,13 +48,13 @@
 		{/if}
 
 		{#if data.text}
-			<div class="my-5">
+			<div class="mb-10 mt-5">
 				{@html data.text}
 			</div>
 		{/if}
 	</div>
 
-	<div class="text-xl font-bold">Comments:</div>
+	<div class="text-primary text-xl font-bold">comments:</div>
 
 	<div class="my-2 flex flex-col gap-2">
 		{#each comments as comment}
