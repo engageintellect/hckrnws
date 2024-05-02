@@ -54,10 +54,7 @@
 		<div class="mt-5 text-sm font-thin">
 			{formatUnixTimestamp(data.time)}
 		</div>
-		<div
-			in:fade={{ delay: 0, duration: 500 }}
-			class="mt-2 text-3xl font-bold drop-shadow sm:text-5xl"
-		>
+		<div in:fade={{ delay: 0, duration: 500 }} class="mt-2 text-5xl font-bold drop-shadow">
 			{data.title}
 		</div>
 
