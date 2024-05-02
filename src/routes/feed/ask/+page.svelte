@@ -10,6 +10,7 @@
 	{#each data.props.posts as post}
 		<!-- {#if post.url} -->
 		<Post
+			time={post.time}
 			score={post.score}
 			url={`/item/${post.id}`}
 			title={post.title}

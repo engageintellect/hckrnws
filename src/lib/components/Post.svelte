@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let id: any;
+	export let time: any;
 	export let user: any;
 	export let title: any;
 	export let url: any;
@@ -7,15 +8,19 @@
 	export let descendants: any;
 	export let score: any;
 	import Icon from '@iconify/svelte';
+	import { formatUnixTimestamp } from '$lib/utils.ts';
 </script>
 
 <a href={title && kids ? `/item/${id}` : `${url}`} target="">
 	<div class="card bg-base-300">
 		<div class="card-body relative p-5">
 			<div class="">
-				<div class="text-lg font-extrabold">{title}</div>
+				<div class="text-neutral-content mt-2 text-sm font-thin">
+					{formatUnixTimestamp(time)}
+				</div>
+				<div class="mt-2 text-xl font-extrabold drop-shadow">{title}</div>
 				<!-- <p class="text-primary text-sm">{user}</p> -->
-				<div class="text-primary mt-2 text-sm">
+				<div class="text-primary text-sm">
 					@{user}
 				</div>
 				<div class="flex w-full items-center justify-between gap-2">

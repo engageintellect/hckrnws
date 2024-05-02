@@ -6,6 +6,7 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import Icon from '@iconify/svelte';
+	import { formatUnixTimestamp } from '$lib/utils';
 
 	let comments: any[] = [];
 
@@ -44,31 +45,39 @@
 	<div class="">
 		<div class="">
 			<button on:click={goBack} class="sticky">
-				<div class="btn btn-ghost btn-sm flex items-center justify-between gap-2">
+				<div class="md:hover:text-primary flex items-center gap-1">
 					<Icon icon="material-symbols:arrow-back" class="h-5 w-5" />
 					<div>back</div>
 				</div>
 			</button>
 		</div>
-		<div>
-			{data.date}
+		<div class="mt-5 text-sm font-thin">
+			{formatUnixTimestamp(data.time)}
 		</div>
-		<div class="mt-10 text-3xl font-bold">
+		<div
+			in:fade={{ delay: 0, duration: 500 }}
+			class="mt-2 text-3xl font-bold drop-shadow sm:text-5xl"
+		>
 			{data.title}
 		</div>
 
-		<div class="text-primary text-sm">
-			{data.by}
+		<div class="text-primary mt-2 text-sm">
+			@{data.by}
 		</div>
 
-		{#if data.url}
-			<a href={data.url} class="btn btn-primary my-5 w-full sm:w-fit">Read Article</a>
-		{/if}
-
 		{#if data.text}
-			<div class="mb-10 mt-5">
+			<div class="my-5 font-thin italic md:text-lg lg:text-xl">
 				{@html data.text}
 			</div>
+		{/if}
+
+		{#if data.url}
+			<a href={data.url} class="btn btn-primary my-5">
+				<div class="flex items-center gap-2">
+					<Icon icon="material-symbols:post" class="h-5 w-5" />
+					<div>read article</div>
+				</div>
+			</a>
 		{/if}
 	</div>
 
