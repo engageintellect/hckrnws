@@ -6,15 +6,15 @@ A Hacker News clone built with [Sveltekit](https://kit.svelte.dev), [Tailwind](h
 
 ## Features
 
-- [✅] View top stories
-- [✅] View new stories
-- [✅] View best stories
-- [✅] View ask stories
-- [✅] View show stories
-- [✅] View job stories
-- [✅] View comments
-- [✅] View story content
-- [] View user profile (WIP)
+- ✅ View top stories
+- ✅ View new stories
+- ✅ View best stories
+- ✅ View ask stories
+- ✅ View show stories
+- ✅ View job stories
+- ✅ View comments
+- ✅ View story content
+- 🔨 View user profile (WIP)
 
 ## Getting Started
 
