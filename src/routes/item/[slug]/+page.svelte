@@ -5,6 +5,7 @@
 	import { fade, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import Icon from '@iconify/svelte';
 
 	let comments: any[] = [];
 
@@ -28,14 +29,31 @@
 	if (!data.text && !data.kids) {
 		window.open(data.url, '_blank');
 	}
+
+	function goBack(): void {
+		// Check if it's safe to go back
+		if (window.history.length > 1) {
+			window.history.back();
+		} else {
+			console.log('No history to go back to.');
+		}
+	}
 </script>
 
-<div class=" px-2">
+<div class="">
 	<div class="">
+		<div class="">
+			<button on:click={goBack} class="sticky">
+				<div class="btn btn-ghost btn-sm flex items-center justify-between gap-2">
+					<Icon icon="material-symbols:arrow-back" class="h-5 w-5" />
+					<div>back</div>
+				</div>
+			</button>
+		</div>
 		<div>
 			{data.date}
 		</div>
-		<div class="mt-5 text-3xl font-bold">
+		<div class="mt-10 text-3xl font-bold">
 			{data.title}
 		</div>
 
@@ -54,21 +72,28 @@
 		{/if}
 	</div>
 
-	<div class="text-primary text-xl font-bold">comments:</div>
+	<div class="text-primary mt-10 text-xl font-bold">comments:</div>
 
-	<div class="my-2 flex flex-col gap-2">
-		{#each comments as comment}
-			{#if comment.text}
-				<div class="card bg-base-300">
-					<div class="card-body break-words p-5">
-						{@html comment.text}
+	<div class="my-2 flex snap-y snap-mandatory flex-col gap-2">
+		{#if comments.length > 0}
+			{#each comments as comment}
+				{#if comment.text}
+					<div class="card bg-base-300 snap-center">
+						<div class="card-body break-words p-5">
+							{@html comment.text}
 
-						<div class="text-primary font-thin">
-							{comment.by}
+							<div class="text-primary mt-2 text-sm">
+								@{comment.by}
+							</div>
 						</div>
 					</div>
-				</div>
-			{/if}
-		{/each}
+				{/if}
+			{/each}
+		{:else}
+			<div class="flex items-center gap-2">
+				<div class="loading loading-ring loading-md"></div>
+				<div>loading comments...</div>
+			</div>
+		{/if}
 	</div>
 </div>

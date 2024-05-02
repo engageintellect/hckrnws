@@ -5,6 +5,7 @@
 	export let url: any;
 	export let kids: any;
 	export let descendants: any;
+	export let score: any;
 	import Icon from '@iconify/svelte';
 </script>
 
@@ -13,22 +14,35 @@
 		<div class="card-body relative p-5">
 			<div class="">
 				<div class="text-lg font-extrabold">{title}</div>
-				<p class="text-primary text-sm">{user}</p>
+				<!-- <p class="text-primary text-sm">{user}</p> -->
+				<div class="text-primary mt-2 text-sm">
+					@{user}
+				</div>
+				<div class="flex w-full items-center justify-between gap-2">
+					<div class="flex items-center gap-2">
+						{#if kids}
+							<div class="badge badge-primary mt-5 flex items-center justify-between gap-2 p-3">
+								<Icon icon="iconamoon:comment-dots-fill" class="h-5 w-5" />
+								<div class="">{kids.length}</div>
+							</div>
+						{/if}
 
-				<div class="flex w-full items-center gap-2">
-					{#if kids}
-						<div class="badge badge-primary mt-5 flex items-center justify-between gap-2 p-3">
-							<Icon icon="iconamoon:comment-dots-fill" class="h-5 w-5" />
-							<div class="">{kids.length}</div>
-						</div>
-					{/if}
+						{#if descendants}
+							<div
+								class="badge badge-primary badge-outline mt-5 flex items-center justify-between gap-2 p-3"
+							>
+								<Icon icon="typcn:flow-children" class="h-5 w-5" />
+								<div class="">{descendants}</div>
+							</div>
+						{/if}
+					</div>
 
-					{#if descendants}
+					{#if score}
 						<div
 							class="badge badge-primary badge-outline mt-5 flex items-center justify-between gap-2 p-3"
 						>
-							<Icon icon="typcn:flow-children" class="h-5 w-5" />
-							<div class="">{descendants}</div>
+							<Icon icon="material-symbols:readiness-score-outline" class="h-5 w-5" />
+							<div class="">{score}</div>
 						</div>
 					{/if}
 				</div>
