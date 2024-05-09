@@ -10,6 +10,8 @@
 
 	let comments: any[] = [];
 
+	$: sortedComments = comments.sort((a, b) => b.time - a.time);
+
 	const fetchComments = async (kid: any) => {
 		const res = await fetch(`/api/getCommentData/?itemId=${kid}`);
 		if (res.ok) {
@@ -54,7 +56,7 @@
 		<div class="mt-5 text-sm font-thin">
 			{formatUnixTimestamp(data.time)}
 		</div>
-		<div in:fade={{ delay: 0, duration: 500 }} class="mt-2 text-5xl font-bold drop-shadow">
+		<div class="mt-2 text-5xl font-bold drop-shadow">
 			{data.title}
 		</div>
 
@@ -81,11 +83,14 @@
 	<div class="text-primary mt-10 text-xl font-bold">comments:</div>
 
 	<div class="my-2 flex snap-y snap-mandatory flex-col gap-2">
-		{#if comments.length > 0}
+		{#if sortedComments.length > 0}
 			{#each comments as comment}
 				{#if comment.text}
 					<div class="card bg-base-300 snap-center">
 						<div class="card-body break-words p-5">
+							<div class="text-primary/70 text-xs">
+								{formatUnixTimestamp(comment.time)}
+							</div>
 							{@html comment.text}
 
 							<div class="text-primary mt-2 text-sm">
