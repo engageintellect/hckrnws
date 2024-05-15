@@ -13,6 +13,9 @@ export function formatUnixTimestamp(timestamp: number): string {
 	// Get the day of the month
 	const dayOfMonth = date.getDate();
 
+	// Get the year
+	const year = date.getFullYear();
+
 	// Get hours in 12-hour format
 	const hour = date.getHours() % 12 || 12; // Convert 0 (midnight) to 12
 
@@ -29,9 +32,9 @@ export function formatUnixTimestamp(timestamp: number): string {
 	const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
 	// Build the formatted date string
-	return `${dayOfWeek} ${month} ${dayOfMonth}, ${hour}:${formattedMinutes}${amPm} ${timezone}`;
+	return `${dayOfWeek} ${month} ${dayOfMonth}, ${year} ${hour}:${formattedMinutes}${amPm} ${timezone}`;
 }
 
 // Example usage:
 // const timestamp = 1714554832;
-// console.log(formatUnixTimestamp(timestamp));  // Output: "Tues Jan 2, 3:20pm PST"
+// console.log(formatUnixTimestamp(timestamp));  // Output: "Tues Jan 2, 2024 3:20pm PST"

@@ -63,8 +63,10 @@
 			{data.title}
 		</div>
 
-		<div class="mt-2 text-primary">
-			@{data.by}
+		<div class="mt-2">
+			<a class=" text-xl font-thin text-primary" href={`/user/${data.by}`}>
+				@{data.by}
+			</a>
 		</div>
 
 		{#if data.text}
@@ -87,7 +89,7 @@
 		{/if}
 	</div>
 
-	<div class="mt-10 text-xl font-bold text-primary">comments:</div>
+	<div class="mt-5 text-xl font-bold text-primary">comments:</div>
 
 	<div class="my-2 flex snap-y snap-mandatory flex-col gap-2">
 		{#if sortedComments.length > 0}
@@ -100,9 +102,9 @@
 							</div>
 							{@html comment.text}
 
-							<div class="mt-2 text-sm text-primary">
+							<a href={`/user/${comment.by}`} class="mt-2 text-sm text-primary">
 								@{comment.by}
-							</div>
+							</a>
 						</div>
 					</div>
 				{/if}
