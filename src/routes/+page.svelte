@@ -16,9 +16,9 @@
 	</p>
 
 	<div class="mt-2 flex items-center justify-center gap-2">
-		<a href="/feed/new" class="btn btn-wide btn-primary my-5 flex items-center gap-2">
-			<Icon icon="material-symbols:dynamic-feed" class="h-7 w-7" />
-			<div class="">go to posts</div>
+		<a href="/feed/new" class="btn btn-primary btn-wide my-5 flex items-center gap-2">
+			<div class="">Launch Feeds</div>
+			<Icon icon="material-symbols:rocket" class="h-7 w-7" />
 		</a>
 	</div>
 </div>

@@ -4,9 +4,7 @@
 </script>
 
 <div>
-	<div class="sticky top-[64px] z-10 my-2">
-		<FeedMenu />
-	</div>
+	<FeedMenu />
 
 	<div class="">
 		<slot />

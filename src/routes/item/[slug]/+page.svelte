@@ -46,9 +46,12 @@
 <div class="">
 	<div class="">
 		<div class="">
-			<button on:click={goBack} class="sticky">
-				<div class="md:hover:text-primary flex items-center gap-1">
-					<Icon icon="material-symbols:arrow-back" class="h-5 w-5" />
+			<button on:click={goBack} class="group/backButton sticky">
+				<div class="flex items-center gap-1 md:hover:text-primary">
+					<Icon
+						icon="material-symbols:arrow-back"
+						class="h-5 w-5 transition-all duration-200 md:group-hover/backButton:-translate-x-1"
+					/>
 					<div>back</div>
 				</div>
 			</button>
@@ -60,13 +63,17 @@
 			{data.title}
 		</div>
 
-		<div class="text-primary mt-2 text-sm">
+		<div class="mt-2 text-primary">
 			@{data.by}
 		</div>
 
 		{#if data.text}
-			<div class="my-5 font-thin italic md:text-lg lg:text-xl">
-				{@html data.text}
+			<div class="card">
+				<div
+					class="card-body my-5 rounded-lg border border-primary bg-base-300 p-5 text-lg font-thin md:text-xl"
+				>
+					{@html data.text}
+				</div>
 			</div>
 		{/if}
 
@@ -80,20 +87,20 @@
 		{/if}
 	</div>
 
-	<div class="text-primary mt-10 text-xl font-bold">comments:</div>
+	<div class="mt-10 text-xl font-bold text-primary">comments:</div>
 
 	<div class="my-2 flex snap-y snap-mandatory flex-col gap-2">
 		{#if sortedComments.length > 0}
 			{#each comments as comment}
 				{#if comment.text}
-					<div class="card bg-base-300 snap-center">
+					<div class="card snap-center bg-base-300/50">
 						<div class="card-body break-words p-5">
-							<div class="text-primary/70 text-xs">
+							<div class="text-xs text-primary">
 								{formatUnixTimestamp(comment.time)}
 							</div>
 							{@html comment.text}
 
-							<div class="text-primary mt-2 text-sm">
+							<div class="mt-2 text-sm text-primary">
 								@{comment.by}
 							</div>
 						</div>

@@ -13,11 +13,13 @@
 	}
 </script>
 
-<!-- <div>
-	Current URL is: {currentUrl}
+<!-- <div class="text-5xl font-bold text-primary">
+	{currentUrl.replace('/feed/', '')}
 </div> -->
 
-<ul class="menu bg-base-100 menu-horizontal w-full flex-nowrap gap-2 overflow-auto">
+<ul
+	class="menu menu-horizontal sticky top-[64px] z-10 my-2 w-full flex-nowrap gap-2 overflow-auto bg-base-100"
+>
 	<li>
 		<a href="/feed/new" class={currentUrl === '/feed/new' ? 'btn btn-primary' : 'btn'}>
 			<Icon icon="ph:fire-fill" class="h-5 w-5" />
