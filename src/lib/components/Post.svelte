@@ -15,12 +15,12 @@
 	<div class="card bg-base-300">
 		<div class="card-body relative p-5">
 			<div class="">
-				<div class="text-neutral-content mt-2 text-sm font-thin">
+				<div class="text-content mt-2 text-sm font-thin">
 					{formatUnixTimestamp(time)}
 				</div>
 				<div class="mt-2 text-xl font-extrabold drop-shadow">{title}</div>
 				<!-- <p class="text-primary text-sm">{user}</p> -->
-				<div class="text-primary text-sm">
+				<div class="text-sm text-primary">
 					@{user}
 				</div>
 				<div class="flex w-full items-center justify-between gap-2">
