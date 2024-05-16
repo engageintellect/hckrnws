@@ -14,7 +14,7 @@ A Hacker News clone built with [Sveltekit](https://kit.svelte.dev), [Tailwind](h
 - ✅ View job stories
 - ✅ View comments
 - ✅ View story content
-- 🔨 View user profile (WIP)
+- ✅ View user profiles
 
 ## Getting Started
 
