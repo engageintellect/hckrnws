@@ -89,7 +89,19 @@
 		{/if}
 	</div>
 
-	<div class="mt-5 text-xl font-bold text-primary">comments:</div>
+	<div class="flex items-center justify-between">
+		<div class="mt-5 text-xl font-bold text-primary">comments:</div>
+
+		<a
+			href={`https://news.ycombinator.com/item?id=${data.id}`}
+			class="btn btn-primary mt-2 flex w-fit items-center gap-2"
+		>
+			<div>add comment</div>
+			<div>
+				<Icon icon="fluent:comment-add-12-filled" class="h-5 w-5" />
+			</div>
+		</a>
+	</div>
 
 	<div class="my-2 flex snap-y snap-mandatory flex-col gap-2">
 		{#if sortedComments.length > 0}
