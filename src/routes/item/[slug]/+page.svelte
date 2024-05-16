@@ -1,10 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	export let data: PageData;
-	import Post from '$lib/components/Post.svelte';
-	import { fade, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 	import Icon from '@iconify/svelte';
 	import { formatUnixTimestamp } from '$lib/utils';
 
