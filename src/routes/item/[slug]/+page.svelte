@@ -1,9 +1,11 @@
 <script lang="ts">
+	import Comment from '$lib/components/Comment.svelte';
 	import type { PageData } from './$types';
-	export let data: PageData;
 	import { onMount } from 'svelte';
 	import Icon from '@iconify/svelte';
 	import { formatUnixTimestamp } from '$lib/utils';
+
+	export let data: PageData;
 
 	let comments: any[] = [];
 
@@ -24,14 +26,11 @@
 		comments = await Promise.all(data.kids.map((kid: any) => fetchComments(kid)));
 	});
 
-	console.log('this is data', data);
-
 	if (!data.text && !data.kids) {
 		window.open(data.url, '_blank');
 	}
 
 	function goBack(): void {
-		// Check if it's safe to go back
 		if (window.history.length > 1) {
 			window.history.back();
 		} else {
@@ -44,7 +43,7 @@
 	<div class="">
 		<div class="">
 			<button on:click={goBack} class="group/backButton sticky">
-				<div class="flex items-center gap-1 md:hover:text-primary">
+				<div class="md:hover:text-primary flex items-center gap-1">
 					<Icon
 						icon="material-symbols:arrow-back"
 						class="h-5 w-5 transition-all duration-200 md:group-hover/backButton:-translate-x-1"
@@ -61,7 +60,7 @@
 		</div>
 
 		<div class="mt-2">
-			<a class=" text-xl font-thin text-primary" href={`/user/${data.by}`}>
+			<a class=" text-primary text-xl font-thin" href={`/user/${data.by}`}>
 				@{data.by}
 			</a>
 		</div>
@@ -69,7 +68,7 @@
 		{#if data.text}
 			<div class="card">
 				<div
-					class="card-body my-5 rounded-lg border border-primary bg-base-300 p-5 text-lg font-thin md:text-xl"
+					class="card-body border-primary bg-base-300 my-5 rounded-lg border p-5 text-lg font-thin md:text-xl"
 				>
 					{@html data.text}
 				</div>
@@ -87,7 +86,7 @@
 	</div>
 
 	<div class="flex items-center justify-between">
-		<div class="mt-5 text-xl font-bold text-primary">comments:</div>
+		<div class="text-primary mt-5 text-xl font-bold">comments:</div>
 
 		<a
 			href={`https://news.ycombinator.com/item?id=${data.id}`}
@@ -102,21 +101,8 @@
 
 	<div class="my-2 flex snap-y snap-mandatory flex-col gap-2">
 		{#if sortedComments.length > 0}
-			{#each comments as comment}
-				{#if comment.text}
-					<div class="card snap-center bg-base-300/50">
-						<div class="card-body break-words p-5">
-							<div class="text-xs text-primary">
-								{formatUnixTimestamp(comment.time)}
-							</div>
-							{@html comment.text}
-
-							<a href={`/user/${comment.by}`} class="mt-2 text-sm text-primary">
-								@{comment.by}
-							</a>
-						</div>
-					</div>
-				{/if}
+			{#each sortedComments as comment}
+				<Comment {comment} depth={0} />
 			{/each}
 		{:else}
 			<div class="flex items-center gap-2">
