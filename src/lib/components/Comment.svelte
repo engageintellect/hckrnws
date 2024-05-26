@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { formatUnixTimestamp } from '$lib/utils';
+	import { formatUnixTimestamp, timeSince } from '$lib/utils';
 
 	export let comment: any;
 	export let depth: number = 0;
+	export let cardBg: boolean = true;
+	export let cardPadding: boolean = true;
 
 	let children: any[] = [];
 
@@ -29,39 +31,31 @@
 	});
 </script>
 
-{#await children}
-	{JSON.stringify(children)}
-{/await}
+<div
+	class={`card snap-center bg-none ${cardBg ? 'bg-base-300/50' : 'bg-none'}`}
+	style="margin-left: {depth * 2}px"
+>
+	<div class={`card-body break-words ${cardPadding ? 'p-5' : 'p-2'}`}>
+		<div class="flex flex-col">
+			<div class="text-primary text-xs font-bold">
+				{timeSince(comment.time)}
+			</div>
 
-<div class="card bg-base-300/50 snap-center" style="margin-left: {depth * 20}px">
-	<div class="card-body break-words p-5">
-		<div class="text-primary text-xs">
-			{formatUnixTimestamp(comment.time)}
+			<div class="text-base-content/50 text-xs">
+				{formatUnixTimestamp(comment.time)}
+			</div>
 		</div>
+
 		{@html comment.text}
 
 		<a href={`/user/${comment.by}`} class="text-primary mt-2 text-sm">
 			@{comment.by}
 		</a>
 
-		{#if children.length > 0}
-			<div class="mt-2">
+		{#if comment.kids}
+			<div class="my-5">
 				{#each children as child}
-					<div class="" style="margin-left: {depth * 20}px">
-						<div class="card-body break-words p-5">
-							<div class="text-primary text-xs">
-								{formatUnixTimestamp(child.time)}
-							</div>
-
-							<div class="prose">
-								{@html child.text}
-							</div>
-
-							<a href={`/user/${child.by}`} class="text-primary mt-2 text-sm">
-								@{child.by}
-							</a>
-						</div>
-					</div>
+					<svelte:self cardBg={false} cardPadding={false} comment={child} depth={depth + 1} />
 				{/each}
 			</div>
 		{/if}

@@ -8,7 +8,7 @@
 	export let descendants: any;
 	export let score: any;
 	import Icon from '@iconify/svelte';
-	import { formatUnixTimestamp } from '$lib/utils.ts';
+	import { formatUnixTimestamp, timeSince } from '$lib/utils';
 </script>
 
 <a href={title && kids ? `/item/${id}` : `${url}`} target="">
@@ -16,11 +16,16 @@
 		<div class="card-body relative p-5">
 			<div class="">
 				<div class="text-content mt-2 text-sm font-thin">
-					{formatUnixTimestamp(time)}
+					<div class="flex items-center justify-between">
+						<div class="text-primary font-bold">{timeSince(time)}</div>
+						<div class="text-base-content/50">
+							{formatUnixTimestamp(time)}
+						</div>
+					</div>
 				</div>
-				<div class="mt-2 text-xl font-extrabold drop-shadow">{title}</div>
+				<div class="mt-5 text-xl font-extrabold drop-shadow">{title}</div>
 				<!-- <p class="text-primary text-sm">{user}</p> -->
-				<div class="text-sm text-primary">
+				<div class="text-primary text-sm">
 					@{user}
 				</div>
 				<div class="flex w-full items-center justify-between gap-2">

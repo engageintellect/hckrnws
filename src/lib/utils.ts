@@ -38,3 +38,35 @@ export function formatUnixTimestamp(timestamp: number): string {
 // Example usage:
 // const timestamp = 1714554832;
 // console.log(formatUnixTimestamp(timestamp));  // Output: "Tues Jan 2, 2024 3:20pm PST"
+
+
+
+
+export function timeSince(timestamp: number): string {
+  const date = new Date(timestamp * 1000);
+  const now = new Date();
+  const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+  const intervals: { [key: string]: number } = {
+    year: 31536000,
+    month: 2592000,
+    week: 604800,
+    day: 86400,
+    hour: 3600,
+    minute: 60,
+    second: 1,
+  };
+
+  for (const [key, value] of Object.entries(intervals)) {
+    const interval = Math.floor(seconds / value);
+    if (interval >= 1) {
+      return interval === 1 ? `1 ${key} ago` : `${interval} ${key}s ago`;
+    }
+  }
+
+  return 'just now';
+}
+
+// Example usage:
+// const exampleDate = 'Fri May 24, 2024 8:06pm PST';
+// console.log(timeAgo(exampleDate)); // Output depends on the current date and time
