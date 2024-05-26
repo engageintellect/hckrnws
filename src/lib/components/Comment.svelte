@@ -55,7 +55,9 @@
 		{#if comment.kids}
 			<div class="my-5">
 				{#each children as child}
-					<svelte:self cardBg={false} cardPadding={false} comment={child} depth={depth + 1} />
+					<div class="border-base-100 border-t pt-2">
+						<svelte:self cardBg={false} cardPadding={false} comment={child} depth={depth + 1} />
+					</div>
 				{/each}
 			</div>
 		{/if}
