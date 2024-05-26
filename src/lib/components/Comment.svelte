@@ -18,12 +18,20 @@
 		}
 	};
 
+	const getChildren = async () => {
+		children = await Promise.all(comment.kids.map((kid: any) => fetchComments(kid)));
+	};
+
 	onMount(async () => {
 		if (comment.kids) {
-			children = await Promise.all(comment.kids.map((kid: any) => fetchComments(kid)));
+			getChildren();
 		}
 	});
 </script>
+
+{#await children}
+	{JSON.stringify(children)}
+{/await}
 
 <div class="card bg-base-300/50 snap-center" style="margin-left: {depth * 20}px">
 	<div class="card-body break-words p-5">
@@ -37,14 +45,17 @@
 		</a>
 
 		{#if children.length > 0}
-			<div class="mt-4">
+			<div class="mt-2">
 				{#each children as child}
-					<div class="card bg-base-300/50 snap-center" style="margin-left: {depth * 20}px">
+					<div class="" style="margin-left: {depth * 20}px">
 						<div class="card-body break-words p-5">
 							<div class="text-primary text-xs">
 								{formatUnixTimestamp(child.time)}
 							</div>
-							{@html child.text}
+
+							<div class="prose">
+								{@html child.text}
+							</div>
 
 							<a href={`/user/${child.by}`} class="text-primary mt-2 text-sm">
 								@{child.by}
@@ -56,3 +67,6 @@
 		{/if}
 	</div>
 </div>
+
+<style>
+</style>
