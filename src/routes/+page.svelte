@@ -16,9 +16,15 @@
 	</p>
 
 	<div class="mt-2 flex items-center justify-center gap-2">
-		<a href="/feed/new" class="btn btn-primary btn-wide my-5 flex items-center gap-2">
-			<div class="">Launch Feeds</div>
-			<Icon icon="material-symbols:rocket" class="h-7 w-7" />
+		<a
+			href="/feed/new"
+			class="btn btn-primary btn-wide group my-5 flex items-center gap-2 shadow transition-all duration-300 hover:shadow-xl"
+		>
+			<div class="text-lg">go to feeds</div>
+			<Icon
+				icon="material-symbols:rocket"
+				class="h-7 w-7 transition-transform duration-300 md:group-hover:translate-x-3 md:group-hover:rotate-90"
+			/>
 		</a>
 	</div>
 </div>
