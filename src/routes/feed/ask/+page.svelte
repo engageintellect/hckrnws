@@ -10,14 +10,14 @@
 	{#each data.props.posts as post}
 		<!-- {#if post.url} -->
 		<Post
-			time={post.time}
-			score={post.score}
-			url={`/item/${post.id}`}
-			title={post.title}
-			user={post.by}
-			kids={post.kids}
-			descendants={post.descendants}
-			id={post.id}
+			time={post?.time}
+			score={post?.score}
+			url={`/item/${post?.id}`}
+			title={post?.title}
+			user={post?.by}
+			kids={post?.kids}
+			descendants={post?.descendants}
+			id={post?.id}
 		/>
 		<!-- {/if} -->
 	{/each}

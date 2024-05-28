@@ -8,17 +8,15 @@
 
 <div in:slide={{ duration: 500 }} class="flex flex-col gap-2">
 	{#each data.props.posts as post}
-		<!-- {#if post.url} -->
 		<Post
-			time={post.time}
-			score={post.score}
-			id={post.id}
-			url={post.url}
-			title={post.title}
-			user={post.by}
-			kids={post.kids}
-			descendants={post.descendants}
+			time={post?.time}
+			score={post?.score}
+			id={post?.id}
+			url={post?.url}
+			title={post?.title}
+			user={post?.by}
+			kids={post?.kids}
+			descendants={post?.descendants}
 		/>
-		<!-- {/if} -->
 	{/each}
 </div>
