@@ -76,10 +76,13 @@
 		{/if}
 
 		{#if data.url}
-			<a href={data.url} class="btn btn-primary my-5">
+			<a href={data.url} class="btn btn-primary group my-5">
 				<div class="flex items-center gap-2">
-					<Icon icon="material-symbols:post" class="h-5 w-5" />
 					<div>read article</div>
+					<Icon
+						icon="mdi:arrow-right"
+						class="h-5 w-5 transition-transform duration-300 md:group-hover:translate-x-1"
+					/>
 				</div>
 			</a>
 		{/if}
