@@ -3,7 +3,7 @@
 	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
 	import Icon from '@iconify/svelte';
-	import { formatUnixTimestamp } from '$lib/utils';
+	import { formatUnixTimestamp, timeSince } from '$lib/utils';
 
 	export let data: PageData;
 
@@ -42,7 +42,7 @@
 <div class="">
 	<div class="">
 		<div class="">
-			<button on:click={goBack} class="group/backButton sticky">
+			<button on:click={goBack} class="group/backButton">
 				<div class="md:hover:text-primary flex items-center gap-1">
 					<Icon
 						icon="material-symbols:arrow-back"
@@ -53,14 +53,20 @@
 			</button>
 		</div>
 		<div class="mt-5 text-sm font-thin">
-			{formatUnixTimestamp(data.time)}
+			<div class="text-primary font-bold">
+				{timeSince(data.time)}
+			</div>
+
+			<div>
+				{formatUnixTimestamp(data.time)}
+			</div>
 		</div>
 		<div class="mt-2 text-5xl font-bold drop-shadow">
 			{data.title}
 		</div>
 
-		<div class="mt-2">
-			<a class=" text-primary text-xl font-thin" href={`/user/${data.by}`}>
+		<div class="mt-5">
+			<a class=" text-primary text-2xl font-bold" href={`/user/${data.by}`}>
 				@{data.by}
 			</a>
 		</div>
@@ -89,15 +95,18 @@
 	</div>
 
 	<div class="flex items-center justify-between">
-		<div class="text-primary mt-5 text-xl font-bold">comments:</div>
+		<div class="text-primary mt-5 text-3xl font-bold">comments:</div>
 
 		<a
 			href={`https://news.ycombinator.com/item?id=${data.id}`}
-			class="btn btn-primary mt-2 flex w-fit items-center gap-2"
+			class="btn btn-primary group mt-2 flex w-fit items-center gap-2"
 		>
 			<div>add comment</div>
 			<div>
-				<Icon icon="fluent:comment-add-12-filled" class="h-5 w-5" />
+				<Icon
+					icon="fluent:comment-add-12-filled"
+					class="h-5 w-5 transition-transform duration-300 md:group-hover:scale-110 md:group-hover:scale-110"
+				/>
 			</div>
 		</a>
 	</div>

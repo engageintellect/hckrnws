@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { formatUnixTimestamp, timeSince } from '$lib/utils';
+	import Icon from '@iconify/svelte';
 
 	export let comment: any;
 	export let depth: number = 0;
@@ -48,16 +49,23 @@
 
 		{@html comment.text}
 
-		<a href={`/user/${comment.by}`} class="text-primary mt-2 text-sm">
+		<a href={`/user/${comment.by}`} class="text-primary mt-2">
 			@{comment.by}
 		</a>
 
 		{#if comment.kids}
 			<div class="">
 				{#each children as child}
-					<div class="border-base-100 border-t">
-						<svelte:self cardBg={false} cardPadding={false} comment={child} depth={depth + 1} />
-					</div>
+					{#if child.text}
+						<div class="border-base-100 flex items-start border-t">
+							<div class="">
+								<Icon icon="mdi:chevron-up" class="text-primary h-7 w-7" />
+							</div>
+							<div class="">
+								<svelte:self cardBg={false} cardPadding={false} comment={child} depth={depth + 1} />
+							</div>
+						</div>
+					{/if}
 				{/each}
 			</div>
 		{/if}
