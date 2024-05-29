@@ -11,7 +11,14 @@
 	import { formatUnixTimestamp, timeSince } from '$lib/utils';
 </script>
 
-<a href={title && kids ? `/item/${id}` : `${url}`} target="">
+<a
+	href={title && kids
+		? `/item/${id}`
+		: url
+			? `${url}`
+			: `https://news.ycombinator.com/item?id=${id}`}
+	target=""
+>
 	<div class="card bg-base-300">
 		<div class="card-body relative p-5">
 			<div class="">
