@@ -48,7 +48,6 @@
 		</div>
 
 		{@html comment.text}
-
 		<a href={`/user/${comment.by}`} class="text-primary mt-2">
 			@{comment.by}
 		</a>
@@ -59,10 +58,17 @@
 					{#if child.text}
 						<div class="border-base-100 flex items-start border-t">
 							<div class="">
-								<Icon icon="mdi:chevron-up" class="text-primary h-7 w-7" />
+								<Icon icon="mdi:chevron-up" class="text-primary h-5 w-5" />
 							</div>
-							<div class="">
-								<svelte:self cardBg={false} cardPadding={false} comment={child} depth={depth + 1} />
+							<div class="overflow-hidden">
+								<div class="break-words">
+									<svelte:self
+										cardBg={false}
+										cardPadding={false}
+										comment={child}
+										depth={depth + 1}
+									/>
+								</div>
 							</div>
 						</div>
 					{/if}
