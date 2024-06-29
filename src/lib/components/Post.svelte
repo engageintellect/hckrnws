@@ -22,23 +22,25 @@
 	<div class="card bg-base-300">
 		<div class="card-body relative p-5">
 			<div class="">
-				<div class="text-content mt-2 text-sm font-thin">
+				<div class="text-content text-sm font-thin">
 					<div class="flex items-center justify-between">
 						<div class="text-primary font-bold">{timeSince(time)}</div>
-						<div class="text-base-content/50">
+						<!-- <div class="text-base-content/50">
 							{formatUnixTimestamp(time)}
-						</div>
+						</div> -->
 					</div>
 				</div>
-				<div class="mt-5 text-xl font-extrabold drop-shadow">{title}</div>
+				<div class="mt-2 text-lg font-extrabold drop-shadow transition-all duration-300 lg:text-xl">
+					{title}
+				</div>
 				<!-- <p class="text-primary text-sm">{user}</p> -->
 				<div class="text-primary text-sm">
 					@{user}
 				</div>
-				<div class="flex w-full items-center justify-between gap-2">
+				<div class="mt-5 flex w-full items-center justify-between gap-2">
 					<div class="flex items-center gap-2">
 						{#if kids}
-							<div class="badge badge-primary mt-5 flex items-center justify-between gap-2 p-3">
+							<div class="badge badge-primary flex items-center justify-between gap-2 p-3">
 								<Icon icon="iconamoon:comment-dots-fill" class="h-5 w-5" />
 								<div class="">{kids.length}</div>
 							</div>
@@ -46,7 +48,7 @@
 
 						{#if descendants}
 							<div
-								class="badge badge-primary badge-outline mt-5 flex items-center justify-between gap-2 p-3"
+								class="badge badge-primary badge-outline flex items-center justify-between gap-2 p-3"
 							>
 								<Icon icon="typcn:flow-children" class="h-5 w-5" />
 								<div class="">{descendants}</div>
@@ -56,7 +58,7 @@
 
 					{#if score}
 						<div
-							class="badge badge-primary badge-outline mt-5 flex items-center justify-between gap-2 p-3"
+							class="badge badge-primary badge-outline flex items-center justify-between gap-2 p-3"
 						>
 							<Icon icon="material-symbols:readiness-score-outline" class="h-5 w-5" />
 							<div class="">{score}</div>

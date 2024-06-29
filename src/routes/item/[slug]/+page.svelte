@@ -61,11 +61,11 @@
 				{formatUnixTimestamp(data.time)}
 			</div>
 		</div>
-		<div class="mt-2 text-5xl font-bold drop-shadow">
+		<div class="mt-2 text-4xl font-bold drop-shadow transition-all duration-300 lg:text-5xl">
 			{data.title}
 		</div>
 
-		<div class="mt-5">
+		<div class="mt-2">
 			<a class=" text-primary text-2xl font-bold" href={`/user/${data.by}`}>
 				@{data.by}
 			</a>
@@ -94,12 +94,12 @@
 		{/if}
 	</div>
 
-	<div class="flex items-center justify-between">
-		<div class="text-primary mt-5 text-3xl font-bold">comments:</div>
+	<div class="mt-5 flex items-center justify-between">
+		<div class="text-primary text-3xl font-bold">comments:</div>
 
 		<a
 			href={`https://news.ycombinator.com/item?id=${data.id}`}
-			class="btn btn-primary group mt-2 flex w-fit items-center gap-2"
+			class="btn btn-sm btn-primary group flex w-fit items-center gap-2"
 		>
 			<div>add comment</div>
 			<div>
